@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/assets/js/jquery.js" type="text/javascript"></script>
+    <!-- 编写JS代码并使用jQuery -->
+    <script>
+        $(function(){
+            //在DOM准备就绪后执行的代码
+            $("#off").on("click",function(){alert("点击事件")})
+// 移除当前元素的所有事件
+            $("#add").off();
+            $("#off").click(function () {
+                $("#add").off("click", function(){
+                    alert("移除事件")
+                })
+            });
+            $("#off").click(function () {
+                $("body").off("click","#off" ,function(){
+                    alert("通过父类元素移除指定事件")
+                })
+            });
+
+        } );
+    </script>
+
+</head>
+<body>
+
+<button id="add">点击事件</button>
+<button id="off">移除事件</button>
+
+</body>
+</html>
